@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Roomy.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,8 +18,14 @@ namespace Roomy.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(string Lastname)
+        public ActionResult Create(User user)
         {
+            if (ModelState.IsValid)
+            {
+
+            }
+
+
             return View();
         }
     }
