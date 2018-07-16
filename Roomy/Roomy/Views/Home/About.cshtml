@@ -1,5 +1,6 @@
 ﻿
 @{
+    //Layout=null pour ne pas utiliser le layout viewStart
     Layout = null;
 }
 
@@ -31,6 +32,7 @@
             <a href="~/">Retour à l'accueil</a>
         </div>
     </div>
+    @RenderBody()
     <script src="~/Scripts/jquery-3.0.0.min.js"></script>
     <script src="~/Scripts/popper.min.js"></script>
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
