@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Roomy.Models
 {
-    public class User
+    public class User : BaseModel
     {
         [Required(ErrorMessage = "Le champ nom est obligatoire")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Le champ {0} doit contenir entre {2} et {1} caractères")]

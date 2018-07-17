@@ -1,10 +1,15 @@
 ﻿@model Roomy.Models.User
 
 @{
+
+    Layout = "~/View/Shared/_LayoutForm.cshtml";
     ViewBag.Title = "Create";
 }
 
-<h2>Nouvel utilisateur</h2>
+@section SectionTitle{ 
+    <h2>Nouvel Utilisateur</h2>
+}
+
 <div class="col-md-6">
     @using (Html.BeginForm("Create", "Users", System.Web.Mvc.FormMethod.Post))
     {
@@ -47,19 +52,24 @@
         </div>
 
 
+    }
 
 
 
 
 
-
-        @*@Html.EditorFor(x => x.Lastname)
-            @Html.TextBoxFor(x => x.Lastname, new { @class = "form-control" })*@
-
+    @*@Html.EditorFor(x => x.Lastname)
+        @Html.TextBoxFor(x => x.Lastname, new { @class = "form-control" })*@
 
 
-        @*@Html.TextBoxFor(x=> x.Lastname)*@
 
-        <button type="submit" class="btn btn-dark">Enregistrer</button>
+    @*@Html.TextBoxFor(x=> x.Lastname)*@
+
+    <button type="submit" class="btn btn-dark">Enregistrer</button>
     }
 </div>
+
+@section SectionScripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

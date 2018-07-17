@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "_LayoutForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>_LayoutForm</h2>
+
+<div class="card">
+    <div class="card-header">
+        @RenderSection("SectionTitle", true)
+    </div>
+    <div class="card-body">
+        @RenderBody()
+    </div>
+</div>
+
+@section SectionScripts{
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @RenderSection("SectionScripts", false)
+}

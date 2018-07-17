@@ -30,14 +30,16 @@
         </nav>
         @*Indique l'emplacement du layout*@
         @RenderBody()
-    <footer class="bg-light">
-        &copy; POEC Rouen 2018
-    </footer>
-    
-    
+        <footer class="bg-light">
+            &copy; POEC Rouen 2018
+        </footer>
+
+
     </div>
     <script src="~/Scripts/jquery-3.0.0.min.js"></script>
     <script src="~/Scripts/popper.min.js"></script>
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    @RenderSection("SectionScripts", false)
+
 </body>
 </html>
