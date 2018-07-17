@@ -2,7 +2,7 @@
 
 @{
 
-    Layout = "~/View/Shared/_LayoutForm.cshtml";
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
     ViewBag.Title = "Create";
 }
 
@@ -12,10 +12,22 @@
 
 <div class="col-md-6">
     @using (Html.BeginForm("Create", "Users", System.Web.Mvc.FormMethod.Post))
+
+
     {
 
         @*<label for="inputNom">Nom<</label>
             <input type="text" name="Lastname" id="inputNom" placeholder="Entrer votre nom" class="form-control"/>*@
+
+        <div class="form-horizontal">
+            <div class="col-md-12" style="margin-top:20px">
+
+                <div class="form-group">
+                    @Html.LabelFor(x => x.CivilityID)
+                    @Html.DropDownListFor(x => x.CivilityID, new SelectList(ViewBag.Civilities, "ID", "Label"))
+                </div>
+
+            
 
         <div class="form-group">
             @Html.LabelFor(x => x.Lastname, "Lastname")
@@ -50,7 +62,8 @@
             @Html.LabelFor(x => x.ConfirmedPassword, "ConfirmedPassword")
             @Html.EditorFor(x => x.ConfirmedPassword, null, new { htmlAttribute = new { @class = "form-control" } })
         </div>
-
+                </div>
+            </div>
 
     }
 
