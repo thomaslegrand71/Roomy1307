@@ -1,0 +1,3 @@
+﻿Créer un modèle catégorie qui aura un nom et un id
+Associer la salle et la catégorie de façon à avoir pour une salle une catégorie et une catégorie pour plusieurs salles
+Ajouter le CRUD des salles

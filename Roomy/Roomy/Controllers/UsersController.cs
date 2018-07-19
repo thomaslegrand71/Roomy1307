@@ -1,5 +1,6 @@
 ﻿using Roomy.Data;
 using Roomy.Models;
+using Roomy.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,12 @@ namespace Roomy.Controllers
         {
             if (ModelState.IsValid)
             {
+                db.Configuration.ValidateOnSaveEnabled = false;
+                //enlever le password de la base de données une fois validé
+                //ModelState.Remove("Password");
+                //ModelState.Remove("ConfirmedPassword");
+                user.Password = user.Password.HashMD5();
+                
                 //enregistrer en bdd
                 db.Users.Add(user);
                 db.SaveChanges();
