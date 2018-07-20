@@ -1,3 +1,14 @@
 ﻿Créer un modèle catégorie qui aura un nom et un id
 Associer la salle et la catégorie de façon à avoir pour une salle une catégorie et une catégorie pour plusieurs salles
 Ajouter le CRUD des salles
+
+
+
+
+
+Récupérer l'id de la salle (il est associé à la vue details)
+Vérifier qu'une image y est associée
+Récupérer l'image
+transformer le format ?
+afficher l'image dans la vue Edit correspondante
+Dans la vue Edit de la salle, y ajouter l'image

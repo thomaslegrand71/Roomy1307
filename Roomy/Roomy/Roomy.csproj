@@ -370,10 +370,19 @@
     <Compile Include="Migrations\201807191300295_foce.Designer.cs">
       <DependentUpon>201807191300295_foce.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807200755246_name.cs" />
+    <Compile Include="Migrations\201807200755246_name.Designer.cs">
+      <DependentUpon>201807200755246_name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807200839461_roomfiles.cs" />
+    <Compile Include="Migrations\201807200839461_roomfiles.Designer.cs">
+      <DependentUpon>201807200839461_roomfiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Civility.cs" />
     <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\RoomFile.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Extensions.cs" />
@@ -431,6 +440,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807191300295_foce.resx">
       <DependentUpon>201807191300295_foce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807200755246_name.resx">
+      <DependentUpon>201807200755246_name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807200839461_roomfiles.resx">
+      <DependentUpon>201807200839461_roomfiles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

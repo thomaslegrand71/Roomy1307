@@ -23,6 +23,8 @@ namespace Roomy.Data
 
         public System.Data.Entity.DbSet<Roomy.Areas.BackOffice.Models.Categorie> Categories { get; set; }
 
+        public DbSet<RoomFile> RoomFiles { get; set; }
+
         //public DbSet<Categorie> Categories { get; set; }
     }
 }

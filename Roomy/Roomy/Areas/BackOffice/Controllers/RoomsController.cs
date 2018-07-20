@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -19,7 +20,7 @@ namespace Roomy.Areas.BackOffice.Controllers
         // GET: BackOffice/Rooms
         public ActionResult Index()
         {
-            var rooms = db.Rooms.Include(r => r.User);
+            var rooms = db.Rooms.Include(r => r.User).Include(x=>x.Category);
             return View(rooms.ToList());
         }
 
@@ -30,7 +31,8 @@ namespace Roomy.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Room room = db.Rooms.Find(id);
+            //Room room = db.Rooms.Find(id);
+            Room room = db.Rooms.Include(r => r.User).Include(x => x.Category).SingleOrDefault(x=>x.id==id);
             if (room == null)
             {
                 return HttpNotFound();
@@ -52,7 +54,7 @@ namespace Roomy.Areas.BackOffice.Controllers
         [HttpPost]
         //Crée un jeton côté client nécessaire à l'application de la méthode POST
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,Capacity,Name,Price,Description,CreatedAt,UserID")] Room room)//Include : paramètres inclus dans l'objet room
+        public ActionResult Create([Bind(Include = "id,Capacity,Name,Price,Description,CreatedAt,UserID,CategoryID")] Room room)//Include : paramètres inclus dans l'objet room
             //public ActionResult Create([Bind(Exclude = "Price")] Room room)//Exclude : permet d'exclure un paramètre de l'objet room
         {
             if (ModelState.IsValid)
@@ -83,7 +85,7 @@ namespace Roomy.Areas.BackOffice.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.UserID = new SelectList(db.Users, "id", "Lastname", room.UserID);
+            ViewBag.UserID = new SelectList(db.Users, "ID", "Lastname", room.UserID);
             ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name", room.CategoryID);
             return View(room);
         }
@@ -95,6 +97,11 @@ namespace Roomy.Areas.BackOffice.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,Capacity,Name,Price,Description,CreatedAt,UserID,CategoryID")] Room room)
         {
+            var old = db.Rooms.Find(room.id);
+            room.CreatedAt = old.CreatedAt;
+            db.Entry(old).State = EntityState.Detached;
+
+
             if (ModelState.IsValid)
             {
                 db.Entry(room).State = EntityState.Modified;
@@ -130,6 +137,28 @@ namespace Roomy.Areas.BackOffice.Controllers
             db.Rooms.Remove(room);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        //ajout d'un fichier dans la bdd
+        [HttpPost]
+        public ActionResult AddFile(int id, HttpPostedFileBase upload)
+        {
+            var model = new RoomFile();
+
+            model.RoomID = id;
+            model.Name = upload.FileName;
+            model.ContentType = upload.ContentType;
+
+            using (var reader = new BinaryReader(upload.InputStream))
+            {
+                model.Content = reader.ReadBytes(upload.ContentLength);
+            }
+
+            db.RoomFiles.Add(model);
+            db.SaveChanges();
+
+            //renvoie vers l'action Edit
+            return RedirectToAction("Edit", new { id = model.RoomID });
         }
 
         protected override void Dispose(bool disposing)

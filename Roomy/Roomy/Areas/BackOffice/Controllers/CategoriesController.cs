@@ -48,7 +48,7 @@ namespace Roomy.Areas.BackOffice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,nom")] Categorie categorie)
+        public ActionResult Create([Bind(Include = "id,Name")] Categorie categorie)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace Roomy.Areas.BackOffice.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,nom")] Categorie categorie)
+        public ActionResult Edit([Bind(Include = "id,Name")] Categorie categorie)
         {
             if (ModelState.IsValid)
             {

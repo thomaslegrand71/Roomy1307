@@ -13,7 +13,7 @@ namespace Roomy.Areas.BackOffice.Models
 
         [Required(ErrorMessage ="Le champ{0} est obligatoire")]
         [Display(Name ="Catégorie")]
-        public string Nom { get; set; }
+        public string Name { get; set; }
 
         
     }
