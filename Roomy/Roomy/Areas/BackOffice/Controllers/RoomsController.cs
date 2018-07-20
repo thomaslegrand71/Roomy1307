@@ -80,7 +80,16 @@ namespace Roomy.Areas.BackOffice.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Room room = db.Rooms.Find(id);
+            Room room = db.Rooms.Include(X => X.Files).SingleOrDefault(x => x.id==id);
+
+            foreach (var item in room.Files)
+            {
+               
+                  
+               
+            }
+
+            //Room room = db.Rooms.Find(id);
             if (room == null)
             {
                 return HttpNotFound();
