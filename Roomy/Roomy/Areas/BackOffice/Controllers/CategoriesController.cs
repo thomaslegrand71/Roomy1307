@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Roomy.Areas.BackOffice.Models;
+using Roomy.Controllers;
 using Roomy.Data;
 using Roomy.Filters;
 
@@ -56,6 +57,7 @@ namespace Roomy.Areas.BackOffice.Controllers
             {
                 db.Categories.Add(categorie);
                 db.SaveChanges();
+                //DisplayMessage("Catégorie enregistrée", MessageType.SUCCESS);
                 return RedirectToAction("Index");
             }
 

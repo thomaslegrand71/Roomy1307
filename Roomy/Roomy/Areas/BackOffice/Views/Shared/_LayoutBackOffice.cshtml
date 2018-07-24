@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
     var user = Session["USER_BO"] as Roomy.Models.User;
-    
+
 }
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Content/roomy.css" rel="stylesheet" />
-    
+
 </head>
 <body>
     <div class="container">
@@ -66,6 +66,15 @@
 
             </div>
         </nav>
+
+        @if(TempData["Message"]!=null)
+        {
+            <div class="alert alert-@TempData["MessageType"].ToString()">
+                @TempData["Message"].ToString()
+            </div>
+        }
+
+
 
         @RenderBody()
 
